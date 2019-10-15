@@ -12,3 +12,4 @@ coverage
 */data/**
 ssl/*
 */data/**
+*/__pycache__
