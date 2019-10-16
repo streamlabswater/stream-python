@@ -1,7 +1,7 @@
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlencode
 import requests
 import os
-import datetime
+
 
 class Stream(object):
     __STREAMLABSWATER_API_HOST = ""
@@ -117,9 +117,9 @@ class Stream(object):
         if 'startTime' not in params:
             raise ValueError("startTime in params is required")
 
-        start_time = params.get('startTime').isoformat()
-        url = urljoin(self.__STREAMLABSWATER_API_HOST, 'v1/locations/{}/readings/water-usage?startTime={}'
-                      .format(location_id, start_time+'Z'))
-        print(url)
+        queryparams = urlencode(params, safe=":,+")
 
+        url = urljoin(self.__STREAMLABSWATER_API_HOST, 'v1/locations/{}/readings/water-usage?{}'
+                      .format(location_id, queryparams))
+        
         return requests.get(url, headers=self.__headers).json()
