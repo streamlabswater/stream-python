@@ -1,0 +1,15 @@
+.env*
+!.env.schema
+.idea
+.DS_Store
+*.log
+node_modules
+dist
+coverage
+.vscode
+*.zip
+*.tgz
+*/data/**
+ssl/*
+*/data/**
+*/__pycache__
