@@ -6,13 +6,6 @@ This is the official python client for the StreamLabs Developer API.
 
 See the [StreamLabs Developer API docs](https://developer.streamlabswater.com/docs/index.html)
 
-### API Features
-  #### Locations
-* [Get all Locations](#get-all-locations)
-* [Get a Location](#get-a-location)
-* [Update a Location](#update-a-location)
-
-## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the package
 
@@ -148,12 +141,3 @@ start_time = yesterday.isoformat(timespec='seconds')
 
 usage = stream.get_location_water_usage(location_id, {'startTime': start_time})
 ```
-
-<!-- A ISO 8601 formated date or epoch timestamp is valid for the `startTime` and `endTime` options i.e
-
-```python
-# All the following a valid
-
-start_time = 
-
-``` -->
