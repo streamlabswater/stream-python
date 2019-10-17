@@ -41,22 +41,22 @@ class Stream(object):
 
         return requests.get(url, headers=self.__headers).json()
 
-    def update_location(self, location_id: str, params: dict) -> dict:
-        """Updates home/away state of location
+    def update_location(self, location_id: str, home_away: str) -> dict:
+        """Sets the  home/away mode of location
 
         :param location_id: id of location to update
-        :param params: dictionary settings that contain the  homeAway mode. home to indicate location is occupied, away to indicate it is vacant
-        :return: dictionary containing updated information for the specified location
+        :param home_away: The desired home or away mode of the location
+        :return: dictionary containing updated location information for the specified location
         """
         if location_id is None:
             raise ValueError('location_id is required')
 
-        if 'homeAway' not in params:
+        if home_away not in ['home', 'away']:
             raise ValueError("Invalid homeAway setting")
 
         url = urljoin(self.__STREAMLABSWATER_API_HOST, 'v1/locations/{}'.format(location_id))
 
-        return requests.put(url, json=params, headers=self.__headers).json()
+        return requests.put(url, json={"homeAway": home_away}, headers=self.__headers).json()
 
     def subscribe_to_location_alerts(self, location_id: str, endpoint: str) -> dict:
         """Subscribes to a locations alerts
@@ -75,6 +75,24 @@ class Stream(object):
 
         return requests.post(url, json={"endpoint": endpoint}, headers=self.__headers).json()
 
+    def confirm_subscription(self, subscription_id: str, confirmation_token: str) -> dict:
+        """Confirm a pending subscription
+
+        :param subscription_id: id of subscription to update
+        :param confirmation_token: confirmation token provided via the subscription endpoint
+        :return: dictionary containing subscription information for the specified location
+        """
+        if subscription_id is None:
+            raise ValueError('subscription_id is required')
+
+        if confirmation_token is None:
+            raise ValueError("confirmation_token is required")
+
+        url = urljoin(self.__STREAMLABSWATER_API_HOST,
+                      'v1/subscriptions/{}/confirm/?confirmationToken={}'.format(subscription_id, confirmation_token))
+
+        return requests.get(url, headers=self.__headers).json()
+
     def get_location_subscriptions(self, location_id: str) -> dict:
         """Retrieves information for a specific location
 
@@ -88,6 +106,47 @@ class Stream(object):
         url = urljoin(self.__STREAMLABSWATER_API_HOST, 'v1/locations/{}/subscriptions'.format(location_id))
 
         return requests.get(url, headers=self.__headers).json()
+
+    def get_subscriptions(self) -> dict:
+        """Retrieves information about all subscriptions
+
+        :return: dictionary containing all the subscriptions 
+        """
+
+        url = urljoin(self.__STREAMLABSWATER_API_HOST,'v1/subscriptions')
+        
+        return requests.get(url, headers=self.__headers).json()
+
+    def get_subscription(self, subscription_id: str) -> dict:
+        """Retrieves information for a specific subscription
+
+        :param subscription_id: id of subscription to retrieve
+        :return: dictionary containing information for the specified subscription
+        """
+
+        if subscription_id is None:
+            raise ValueError('subscription_id is required')
+
+        url = urljoin(self.__STREAMLABSWATER_API_HOST,
+                      'v1/subscriptions/{}'.format(subscription_id))
+
+        return requests.get(url, headers=self.__headers).json()
+    
+    def delete_subscription(self, subscription_id: str) -> dict:
+        """Delete a  subscription
+
+        :param subscription_id: id of subscription to delete
+        :return: None
+        """
+
+        if subscription_id is None:
+            raise ValueError('subscription_id is required')
+
+        url = urljoin(self.__STREAMLABSWATER_API_HOST,
+                      'v1/subscriptions/{}'.format(subscription_id))
+
+        requests.delete(url, headers=self.__headers)
+        return
 
     def get_location_water_usage_summary(self, location_id: str) -> dict:
         """Retrieves water usage summary for the location
