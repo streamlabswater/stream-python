@@ -1,4 +1,4 @@
-# StreamLabs Developer API Python Client
+# StreamLabs Python Library
 
 This is the official python client for the StreamLabs Developer API.
 
@@ -28,7 +28,7 @@ stream = Stream('YOUR_STREAMLABSWATER_API_KEY')
 ```
 
 ### Get all Locations
-Start by fetching all your [locations](https://developer.streamlabswater.com/docs/resources/locations/get-all-locations.html)
+Start by fetching all your [locations](https://developer.streamlabswater.com/docs/get-all-locations.html)
 
 ```python
 
@@ -37,7 +37,7 @@ locations = stream.get_locations()
 ```
 
 ### Get a Location
-A `location_id` is required to fetch details of a [location](https://developer.streamlabswater.com/docs/resources/locations/get-a-location.html), water usage and for updating *homeAway*.
+A `location_id` is required to fetch details of a [location](https://developer.streamlabswater.com/docs/get-a-location.html), water usage and for updating *homeAway*.
 
 ```python
 
@@ -49,7 +49,7 @@ my_home = stream.get_location(location_id)
 
 ### Update a Location
 Currently you can only update the *homeAway* mode of the location
-When updating a location the response is always the [updated location](https://developer.streamlabswater.com/docs/resources/locations/update-a-location.html) details
+When updating a location the response is always the [updated location](https://developer.streamlabswater.com/docs/update-a-location.html) details
 
 ```python
 
@@ -62,7 +62,7 @@ my_home = stream.update_location(location_id, 'away')
 ```
 
 ### Subscribe to Location Alerts
-If you choose to recieve notifications when alerts become active or end for a location, you need to provide a valid url endpoint where the StreamLabs service will send the notifications. The following methods wrap the corresponding StreamLabs api endpoints as descriped in the [Subscribe to Location Alerts section in the docs](https://developer.streamlabswater.com/docs/resources/location-subscriptions/subscribe-to-location-alerts.html)
+If you choose to recieve notifications when alerts become active or end for a location, you need to provide a valid url endpoint where the StreamLabs service will send the notifications. The following methods wrap the corresponding StreamLabs api endpoints as descriped in the [Subscribe to Location Alerts section in the docs](https://developer.streamlabswater.com/docs/subscribe-to-location-alerts.html)
 
 #### Create Subscription
 ```python

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='streamlabswater_stream',
-    version='1.0.0',
+    version='0.2.1',
     packages=['streamlabswater'],
     keywords = ['streamlabs', 'streamlabswater', 'iot', 'water', 'sensor', 'smarthome', 'automation'],
     license='MIT',
