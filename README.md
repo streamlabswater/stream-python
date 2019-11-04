@@ -141,3 +141,7 @@ start_time = yesterday.isoformat(timespec='seconds')
 
 usage = stream.get_location_water_usage(location_id, {'startTime': start_time})
 ```
+
+## Credits
+
+This project was heavily inspired by [streamlabswater-python](https://github.com/cpopp/streamlabswater-python)
