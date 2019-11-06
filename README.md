@@ -11,7 +11,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the pac
 
 ```shell
 
-pip install streamlabswater-streamlabswater
+pip3 install streamlabswater-streamlabswater
 
 ```
 
