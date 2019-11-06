@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='streamlabswater-streamlabswater',
-    version='0.3.1',
+    version='0.3.2',
     packages=find_packages(),
     keywords = ['streamlabs', 'streamlabswater', 'iot', 'water', 'sensor', 'smarthome', 'automation'],
     license='MIT',
