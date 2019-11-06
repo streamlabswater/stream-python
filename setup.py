@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='streamlabswaterlibs-streamlabswater',
-    version='0.2.4',
+    name='streamlabswaterlib-streamlabswater',
+    version='0.3.0',
     packages=find_packages(),
     keywords = ['streamlabs', 'streamlabswater', 'iot', 'water', 'sensor', 'smarthome', 'automation'],
     license='MIT',
