@@ -11,7 +11,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the pac
 
 ```shell
 
-pip install streamlabswater
+pip install streamlabswaterlib-streamlabswater
 
 ```
 
@@ -21,7 +21,7 @@ The package needs to configured with your accounts API Key available when you  l
 
 ```python
 
-from streamlabswater import Stream
+from streamlabswaterlib import Stream
 
 stream = Stream('YOUR_STREAMLABSWATER_API_KEY')
 
